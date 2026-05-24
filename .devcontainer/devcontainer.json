@@ -1,0 +1,42 @@
+{
+  "name": "Entorno Oracle 19c",
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "app",
+  "workspaceFolder": "/workspace",
+  "features": {
+    "ghcr.io/devcontainers/features/node:1": {
+      "version": "latest"
+    }
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "Oracle.sql-developer",
+        "mtxr.sqltools",
+        "mtxr.sqltools-driver-oracle",
+        "ms-vscode.cpptools"
+      ],
+      "settings": {
+        "sqltools.useNodeRuntime": true,
+        "sqltools.connections": [
+          {
+            "name": "Oracle_Admin_Local",
+            "driver": "Oracle",
+            "server": "localhost",
+            "port": 1521,
+            "database": "ORCL19C",
+            "username": "SYSTEM",
+            "password": "admin",
+            "oracleOptions": {
+              "privilege": "Normal",
+              "thickMode": false,
+              "autoCommit": false,
+              "lowerCase": false,
+              "limitPrefetchRows": false
+            }
+          }
+        ]
+      }
+    }
+  }
+}

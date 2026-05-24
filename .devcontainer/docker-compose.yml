@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  app:
+    image: mcr.microsoft.com/devcontainers/base:ubuntu
+    volumes:
+      - ..:/workspace:cached
+    command: sleep infinity
+    network_mode: service:db 
+
+  db:
+    image: doctorkirk/oracle-19c
+    environment:
+      - ORACLE_PWD=admin
+      - ORACLE_SID=ORCL19C
+    ports:
+      - "1521:1521"
+    volumes:
+      - oracle_data:/opt/oracle/oradata
+
+volumes:
+  oracle_data:
